@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo 'Styling, testing your project before committing'
+
+# Check Prettier standards
+yarn check-format ||
+{
+    echo 'Prettier check failed, please fix your code before committing'
+    false;
+}
+
+# Check ESLint standards
+yarn check-lint ||
+{
+    echo 'ESLint check failed, please fix your code before committing'
+    false;
+}
+
+# Check tsconfig standards
+yarn check-types ||
+{
+    echo 'types check failed, please fix your code before committing'
+    false;
+}
+
+# build
+yarn build ||
+{
+    echo 'build failed, please fix your code before committing'
+    false;
+}
+
+# If everything is ok, let the commit happen
+echo 'All checks passed, committing'

@@ -1,3 +1,7 @@
+## Learning Express.js with Typescript
+
+A dummy project to learn how express.js work with typescript.
+
 ## Deployment
 
 To deploy this project run
@@ -26,3 +30,7 @@ npx husky add .husky/pre-commit "npm test"
 yarn format
 git commit -m "blablabla"
 ```
+
+## Documentation
+
+[API Documentation](https://documenter.getpostman.com/view/18743612/2s9YkjANtB)

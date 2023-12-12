@@ -1,16 +1,28 @@
+## Deployment
+
+To deploy this project run
+
+```bash
 npm install
 yarn prepare
 yarn dev
 yarn migrate:dev
+```
 
-<!-- To linting -->
+To lint this project run
+```bash
 yarn lint
+```
 
-<!-- To Build -->
+To build this project run
+```bash
 yarn build
 yarn prod
+```
 
-<!-- Git Setup -->
+Git setup for this project
+```bash
 npx husky add .husky/pre-commit "npm test"
 yarn format
 git commit -m "blablabla"
+```

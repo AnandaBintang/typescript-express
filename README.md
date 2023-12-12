@@ -1,6 +1,7 @@
 npm install
 yarn prepare
 yarn dev
+yarn migrate:dev
 
 <!-- To linting -->
 yarn lint

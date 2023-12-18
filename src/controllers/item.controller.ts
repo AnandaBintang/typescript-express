@@ -16,7 +16,12 @@ export const getAllItem = async (
       data
     })
   } catch (error: Error | any) {
-    next(new Error('Error in getAllItem: ' + error.message))
+    next(
+      new Error(
+        'Error in src/controllers/item.controller.ts: getAllItem - ' +
+          error.message
+      )
+    )
   }
 }
 
@@ -41,6 +46,11 @@ export const inputItem = (
       data: value
     })
   } catch (error: Error | any) {
-    next(new Error('Error in inputItem: ' + error.message))
+    next(
+      new Error(
+        'Error in src/controllers/item.controller.ts: inputItem - ' +
+          error.message
+      )
+    )
   }
 }

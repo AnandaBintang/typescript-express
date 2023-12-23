@@ -1,6 +1,6 @@
 import { type NextFunction, type Request, type Response } from 'express'
 import { inputUserValidation } from '../validations/user.validation'
-import { createUser } from '../services/user.service'
+import { createUser, findUserByEmail } from '../services/user.service'
 import { encrypt } from '../utils/bcrypt'
 import type UserType from '../types/user.types'
 
@@ -14,6 +14,16 @@ export const registerUser = async (
     if (error != null) {
       return res.status(400).json({
         error: error.details[0].message,
+        message: 'Failed to register user!',
+        data: value
+      })
+    }
+
+    // Check if email already exists
+    const existingUser = await findUserByEmail(value.email)
+    if (existingUser != null) {
+      return res.status(400).json({
+        error: 'Email already exists!',
         message: 'Failed to register user!',
         data: value
       })

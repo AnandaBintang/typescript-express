@@ -23,6 +23,7 @@ export const registerUser = async (
 ): Promise<any> => {
   try {
     const { error, value } = inputUserValidation(req.body as UserType)
+
     if (error != null) {
       return res.status(400).json({
         error: error.details[0].message,

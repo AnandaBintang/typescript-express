@@ -11,6 +11,12 @@ export const createUser = async (payload: UserType): Promise<any> => {
   return data
 }
 
+export const findAllUser = async (): Promise<any> => {
+  const data = await prisma.user.findMany()
+
+  return data
+}
+
 export const findUserById = async (id: string): Promise<any> => {
   const data = await prisma.user.findUnique({
     where: {
@@ -35,6 +41,16 @@ export const deleteUserById = async (id: string): Promise<any> => {
   const data = await prisma.user.delete({
     where: {
       id
+    }
+  })
+
+  return data
+}
+
+export const userLogin = async (payload: UserType): Promise<any> => {
+  const data = await prisma.user.findUnique({
+    where: {
+      email: payload.email
     }
   })
 

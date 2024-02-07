@@ -37,3 +37,23 @@ export const inputUserValidation = (
 
   return schema.validate(payload)
 }
+
+export const loginUserValidation = (
+  payload: UserType
+): Joi.ValidationResult<UserType> => {
+  const schema = Joi.object({
+    email: Joi.string().trim().required().email().messages({
+      'string.base': 'Email should be a type of text',
+      'string.empty': 'Please enter an email',
+      'string.email': 'Please enter a valid email',
+      'any.required': 'Email is a required field'
+    }),
+    password: Joi.string().required().messages({
+      'string.base': 'Password should be a type of text',
+      'string.empty': 'Please enter a password',
+      'any.required': 'Password is a required field'
+    })
+  })
+
+  return schema.validate(payload)
+}
